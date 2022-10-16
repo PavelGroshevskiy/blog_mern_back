@@ -9,7 +9,10 @@ import { postCreateValidation } from "./validation/post.js";
 import { PostController, UserController } from "./controllers/index.js";
 
 mongoose
-	.connect(process.env.MONGODB_URL)
+	.connect(
+		// 'mongodb+srv://admin:admin@cluster0.no1co.mongodb.net/blog?retryWrites=true&w=majority'
+		process.env.MONGODB_URL
+	)
 	.then(() => {
 		console.log("DB is OK");
 	})
