@@ -1,4 +1,5 @@
 import express from "express";
+import fs from "fs";
 import mongoose from "mongoose";
 import multer from "multer";
 import cors from "cors";
@@ -24,6 +25,9 @@ const app = express();
 const storage = multer.diskStorage({
 	//функция какой путь использовать
 	destination: (__, _, cb) => {
+		if (fs.existsSync("uploads")) {
+			fs.mkdirSync("uploads");
+		}
 		cb(null, "uploads");
 	},
 	// название файла
